@@ -1,4 +1,6 @@
 ﻿using System;
+using TiendaLibrito.Connection;
+using TiendaLibrito.Modelo;
 
 namespace TiendaLibrito
 {
@@ -6,7 +8,7 @@ namespace TiendaLibrito
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+
         }
     }
 }
