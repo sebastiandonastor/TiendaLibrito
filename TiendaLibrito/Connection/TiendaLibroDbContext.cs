@@ -16,6 +16,9 @@ namespace TiendaLibrito.Connection
             modelBuilder.ApplyConfiguration(new AutorLibroConfiguration());
             modelBuilder.ApplyConfiguration(new ClienteConfiguration());
             modelBuilder.ApplyConfiguration(new DetalleClienteConfiguration());
+            modelBuilder.ApplyConfiguration(new FacturaConfiguration());
+            modelBuilder.ApplyConfiguration(new DetalleFacturaConfiguration());
+
 
         }
 
@@ -29,5 +32,7 @@ namespace TiendaLibrito.Connection
         public DbSet<AutorLibro> AutorLibros { get; set; }
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<DetalleCliente> DetalleClientes { get; set; }
+        public DbSet<Factura> Facturas { get; set; }
+        public DbSet<DetalleFactura> DetalleFacturas { get; set; }
     }
 }

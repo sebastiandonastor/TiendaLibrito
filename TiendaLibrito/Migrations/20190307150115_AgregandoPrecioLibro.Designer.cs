@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TiendaLibrito.Connection;
 
 namespace TiendaLibrito.Migrations
 {
     [DbContext(typeof(TiendaLibroDbContext))]
-    partial class TiendaLibroDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190307150115_AgregandoPrecioLibro")]
+    partial class AgregandoPrecioLibro
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -82,42 +84,6 @@ namespace TiendaLibrito.Migrations
                     b.ToTable("DetalleClientes");
                 });
 
-            modelBuilder.Entity("TiendaLibrito.Modelo.DetalleFactura", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("FechaExpedicion");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("DetalleFacturas");
-                });
-
-            modelBuilder.Entity("TiendaLibrito.Modelo.Factura", b =>
-                {
-                    b.Property<int>("IdCliente");
-
-                    b.Property<int>("IdLibro");
-
-                    b.Property<int>("IdDetalleFactura");
-
-                    b.Property<int?>("AutorId");
-
-                    b.Property<int>("Cantidad");
-
-                    b.HasKey("IdCliente", "IdLibro", "IdDetalleFactura");
-
-                    b.HasIndex("AutorId");
-
-                    b.HasIndex("IdDetalleFactura");
-
-                    b.HasIndex("IdLibro");
-
-                    b.ToTable("Facturas");
-                });
-
             modelBuilder.Entity("TiendaLibrito.Modelo.Libro", b =>
                 {
                     b.Property<int>("Id")
@@ -155,28 +121,6 @@ namespace TiendaLibrito.Migrations
                     b.HasOne("TiendaLibrito.Modelo.Cliente", "Cliente")
                         .WithOne("DetalleCliente")
                         .HasForeignKey("TiendaLibrito.Modelo.DetalleCliente", "IdCliente")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("TiendaLibrito.Modelo.Factura", b =>
-                {
-                    b.HasOne("TiendaLibrito.Modelo.Autor")
-                        .WithMany("Facturas")
-                        .HasForeignKey("AutorId");
-
-                    b.HasOne("TiendaLibrito.Modelo.Cliente", "Cliente")
-                        .WithMany("Facturas")
-                        .HasForeignKey("IdCliente")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("TiendaLibrito.Modelo.DetalleFactura", "DetalleFactura")
-                        .WithMany("Facturas")
-                        .HasForeignKey("IdDetalleFactura")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("TiendaLibrito.Modelo.Libro", "Libro")
-                        .WithMany("Facturas")
-                        .HasForeignKey("IdLibro")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

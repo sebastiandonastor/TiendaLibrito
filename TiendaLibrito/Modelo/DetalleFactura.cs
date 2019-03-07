@@ -4,13 +4,10 @@ using System.Text;
 
 namespace TiendaLibrito.Modelo
 {
-    public class Cliente
+    public class DetalleFactura
     {
         public int Id { get; set; }
-        public String Nombre { get; set; }
-        public String Apellido { get; set; }
-        public DetalleCliente DetalleCliente { get; set; }
-
+        public DateTime FechaExpedicion { get; set; }
 
         public List<Factura> Facturas { get; set; }
     }

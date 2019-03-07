@@ -11,6 +11,6 @@ namespace TiendaLibrito.Modelo
         public String Apellido { get; set; }
 
         public List<AutorLibro> AutorLibros { get; set; }
-
+        public List<Factura> Facturas { get; set; }
     }
 }
